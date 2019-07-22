@@ -31,7 +31,7 @@ $ composer install
 ```
 
 ## Import the database file on phpmyadmin
-You can find the database file in the root folder named [ttour.sql](README.md)
+You can find the database file in the root folder named [ttour.sql](ttours.sql)
 
 ### or you use the symfony console component to create the database, just run the following code
 ```
