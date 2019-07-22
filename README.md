@@ -6,6 +6,14 @@ Built using Symform framework
 - PHP v7.3+
 - Composer
 
+### Technologies used
+- Symfony Framework
+- Symfony flex
+- Bootstrap
+- Jquery
+- Webpack
+- Mapbox
+
 ## Installation
 Clone the repository or download the zip file
 ```
