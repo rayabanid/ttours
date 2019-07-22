@@ -10,7 +10,7 @@ Built using Symform framework
 - Symfony Framework
 - Symfony flex
 - Bootstrap
-- Jquery
+- JQuery
 - Webpack
 - Mapbox
 
