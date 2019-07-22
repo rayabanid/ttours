@@ -1,0 +1,7 @@
+{% extends('layouts/base.html.twig') %}
+
+{% block title %}TTours | Create New Tour{% endblock %}
+
+{% block body %}
+	{{ include('tour/_form.html.twig', {'formId': 'create-tour'}) }}
+{% endblock %}

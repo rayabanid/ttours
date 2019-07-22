@@ -1,0 +1,31 @@
+{% extends('layouts/base.html.twig') %}
+
+{% block title %}TTours | Sign Up{% endblock %}
+
+{% block body %}
+<block class="content">
+    <main class="main">
+        <div class="signup-form">
+            <div class="notification"></div>
+            <h2 class="heading-secondary ma-bt-lg">Sign up to create your account!</h2>
+            {{ form_start(form, { 'attr': {'class': 'form form--signup', 'novalidate': 'novalidate'} }) }}
+                <div class="form__group">
+                    {{ form_label(form, 'Email Address', {'label_attr': {'for': 'email', 'class': 'form__label'} }) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form__input', 'placeholder': 'Email'} }) }}
+                </div>
+                <div class="form__group">
+                    {{ form_label(form.password.first, 'Password', {'label_attr': {'for': 'password', 'class': 'form__label'} }) }}
+                    {{ form_widget(form.password.first, {'attr': {'class': 'form__input', 'placeholder': 'Password'} }) }}
+                </div>
+                <div class="form__group">
+                    {{ form_label(form.password.second, 'Confirm Password', {'label_attr': {'for': 'confirm_password', 'class': 'form__label'} }) }}
+                    {{ form_widget(form.password.second, {'attr': {'class': 'form__input', 'placeholder': 'Confirm Password'} }) }}
+                </div>
+                <div class="form__group">
+                  <button id="btn-sign-up" class="btn btn--green">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</block>
+{% endblock %}

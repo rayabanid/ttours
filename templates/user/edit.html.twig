@@ -1,0 +1,7 @@
+{% extends('layouts/base.html.twig') %}
+
+{% block title %}TTours | Edit User{% endblock %}
+
+{% block body %}
+    {{ include('user/_form.html.twig', {'formId': 'edit-user', 'action': 'edit', 'button_label': 'Update', 'title': 'Edit User'}) }}
+{% endblock %}

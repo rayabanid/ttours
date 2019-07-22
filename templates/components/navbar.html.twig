@@ -1,0 +1,24 @@
+{% set user = app.user %}
+<header class="header">
+    <nav class="nav nav--tours">
+        {% if (user) %}
+        <a href="{{ url('tour_list') }}" class="nav__el">All tours</a>
+        {% endif %}
+    </nav>
+    <div class="header__logo">
+        <a href="{{ url('tour_index') }}"><img src="{{ asset('img/logo-white.png') }}" alt="TTours logo" /></a>
+    </div>
+    <nav class="nav nav--user">
+        {% if user %}
+        <a href="{{ url('logout') }}" class="nav__el nav__el--logout">Logout</a>
+        <a href="{{ url('user_account') }}" class="nav__el">
+            {% set profileImage = user.profileImage ? user.profileImage : 'default.jpg' %}
+            <img src="{{ asset('uploads/users/'~profileImage) }}" alt="{{ user.getFullName() }}" class="nav__user-img" />
+            <span>{{ (user.firstName) ? user.firstName : user.email }}</span>
+        </a>
+        {% else %}
+        <a href="{{ url('login') }}" class="nav__el">Log in</a>
+        <a href="{{ url('register') }}" class="nav__el nav__el--cta">Sign up</a>
+        {% endif %}
+    </nav>
+</header>

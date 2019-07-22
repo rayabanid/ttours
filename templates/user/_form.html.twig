@@ -1,0 +1,38 @@
+<a href="{{ path('user_list') }}" class="mb-5 text-uppercase d-block fs-1">Back to list</a>
+<div>
+	<div class="notification"></div>
+	<h2 class="heading-secondary ma-bt-lg">{{ title|default('Create new user') }}</h2>
+	{{ form_start(form, { 'method': 'post','attr': {'id': formId, 'class': 'user-form form', 'novalidate': 'novalidate'} }) }}
+		{% if (formId == "edit-user") %}
+			{{ form_widget(form.id) }}
+		{% endif %}
+		<div class="form__group">
+			{{ form_label(form, 'First Name', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.firstName, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Last Name', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.lastName, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Email Address', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.email, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		{% if (action == 'new') %}
+		<div class="form__group ma-bt-md">
+			{{ form_label(form, 'Password', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.password, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		{% endif %}
+		<div class="form__group form__photo-upload">
+			{% set profileImage = (user.profileImage) ? user.profileImage : 'default.jpg' %}
+			<img src="{{ asset('uploads/users/'~profileImage) }}" alt="{{ user.getFullName() }}" class="form__user-photo">
+			{{ form_widget(form.profileImage, {'id': 'photo', 'attr': {'class': 'form__upload'} }) }}
+			{{ form_label(form, 'Choose new photo', { 'label_attr': {'for': 'photo'} }) }}
+		</div>
+		<div class="form__group">
+            <button type="submit" id="btn-save" class="btn btn--green">{{ button_label|default('Save') }}</button>
+          </div>
+	{{ form_end(form) }}
+  </form>
+</div>

@@ -1,0 +1,67 @@
+<a href="{{ path('tour_list') }}" class="mb-5 text-uppercase d-block fs-1">Back to list</a>
+<div>
+	<div class="notification"></div>
+	<h2 class="heading-secondary ma-bt-lg">{{ title|default('Create new tour') }}</h2>
+	{{ form_start(form, { 'method': 'post','attr': {'id': formId, 'class': 'tour-form form', 'novalidate': 'novalidate'} }) }}
+		{% if (formId == "edit-tour") %}
+			{{ form_widget(form.id) }}
+		{% endif %}
+		<div class="form__group">
+			{{ form_label(form, 'Name', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.name, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Duration', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.duration, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Max Group Size', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.maxGroupSize, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Difficulty', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.difficulty, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Ratings', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.ratings, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Price', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.price, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Summary', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.summary, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Description', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.description, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Image Cover', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.imageCover, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		
+		<div class="form__group">
+			{{ form_label(form, 'Location', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.location, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Latitude', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.latitude, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Longitude', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.longitude, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+			{{ form_label(form, 'Start Date', {'label_attr': {'class': 'form__label'} }) }}
+			{{ form_widget(form.startDate, {'attr': {'class': 'form__input'} }) }}
+		</div>
+		<div class="form__group">
+            <button type="submit" id="btn-save" class="btn btn--green">{{ button_label|default('Save') }}</button>
+          </div>
+	{{ form_end(form) }}
+  </form>
+</div>

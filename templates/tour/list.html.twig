@@ -1,0 +1,53 @@
+{% extends('layouts/base.html.twig') %}
+
+{% block title %}TTours | All Tours{% endblock %}
+
+{% block body %}
+    <div class="user-view">
+        {{ include('components/_left_side_nav.html.twig') }}
+        <div class="user-view__content pt-5">
+            <div class="notification"></div>
+            <div class="px-3 py-1">
+                <a href="{{ url('tour_new') }}" class="btn btn-sm btn--green mb-4 rounded">Create new</a>
+                <table class="table table-striped fs-1">
+                    <thead>
+                        <tr>
+                            <th>Image Cover</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Start Date</th>
+                            <th>Duration</th>
+                            <th>Difficulty</th>
+                            <th>Ratings</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for tour in tours %}
+                        <tr>
+                            <td><img src="{{ asset('uploads/tours/'~tour.imageCover) }}" alt="{{ tour.name }}" width="100" height="80"></td>
+                            <td>{{ tour.name }}</td>
+                            <td>{{ tour.location }}</td>
+                            <td>{{ tour.startDate ? tour.startDate|date('F Y') : '' }}</td>
+                            <td>{{ tour.duration }} day(s)</td>
+                            <td>{{ tour.difficulty|capitalize }}</td>
+                            <td>{{ tour.ratings }}</td>
+                            <td>{{ tour.price }}</td>
+                            <td>
+                                <a href="{{ url('tour_show', {'id': tour.id}) }}" target="_blank" class="btn btn--small btn--blue rounded"><i class="fas fa-eye"></i></a>
+                                <a href="{{ url('tour_edit', {'id': tour.id}) }}" class="btn btn--small btn--green rounded"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="javascript:void(0);" data-tour-id="{{ tour.id }}" id="delete-tour" class="btn btn--small btn--red rounded delete-tour"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="16" class="text-center">No tour(s) found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

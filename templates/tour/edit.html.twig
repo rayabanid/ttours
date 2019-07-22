@@ -1,0 +1,7 @@
+{% extends('layouts/base.html.twig') %}
+
+{% block title %}TTours | Edit Tour{% endblock %}
+
+{% block body %}
+    {{ include('tour/_form.html.twig', {'formId': 'edit-tour', 'button_label': 'Update', 'title': 'Edit Tour'}) }}
+{% endblock %}

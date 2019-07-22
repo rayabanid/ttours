@@ -1,0 +1,28 @@
+<nav class="user-view__menu">
+	<ul class="side-nav">
+		<li class="{{ app.request.get('_route') == 'tour_list' ? 'side-nav--active' }}">
+			<a href="{{ url('tour_list') }}">
+				<svg>
+                    <use xlink:href="{{ asset('img/icons.svg#icon-map') }}"></use>
+                </svg>
+                Manage Tours
+			</a>
+		</li>
+		<li class="{{ app.request.get('_route') == 'user_list' ? 'side-nav--active' }}">
+			<a href="{{ url('user_list') }}">
+				<svg>
+                    <use xlink:href="{{ asset('img/icons.svg#icon-users') }}"></use>
+                </svg>
+                Manage Users
+			</a>
+		</li>
+		<li class="{{ app.request.get('_route') == 'user_account' ? 'side-nav--active' }}">
+			<a href="{{ url('user_account') }}">
+				<svg>
+                    <use xlink:href="{{ asset('img/icons.svg#icon-settings') }}"></use>
+                </svg>
+                Settings
+			</a>
+		</li>
+	</ul>
+</nav>
