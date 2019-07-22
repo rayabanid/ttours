@@ -27,8 +27,8 @@ class TourFixtures extends AppFixtures
 	        $tour->setDescription($this->faker->paragraph);
 	        $tour->setImageCover($this->faker->image('public/uploads/tours', 400, 300, null, false));
 	        $tour->setLocation($this->faker->city.', '.$this->faker->country);
-	        $tour->setLatitude($this->faker->latitude(-90, 90));
-	        $tour->setLongitude($this->faker->longitude(-180, 180));
+	        $tour->setLatitude($this->faker->latitude($min = -90, $max = 90));
+	        $tour->setLongitude($this->faker->longitude($min = -180, $max = 180));
 	        $tour->setStartDate($this->faker->dateTime);
 		});
 
