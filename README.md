@@ -56,7 +56,7 @@ Note: The password of the user is *`test`*
 // Load dummy data
 public function loadData(ObjectManager $manager)
 {
-	*...lines 22 - 27*
+	...lines 22 - 27
 	$encoder = $this->encoder->encodePassword($user, 'test');
 	$user->setPassword($encoder);
 ```
