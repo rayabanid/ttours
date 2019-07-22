@@ -7,7 +7,8 @@
     <section class="section-header">
         <div class="header__hero">
           <div class="header__hero-overlay">&nbsp;</div>
-           <img src="{{ asset('uploads/tours/'~ tour.imageCover) }}" alt="{{ tour.name }}" class="header__hero-img">
+            {% set imageCover = tour.imageCover ? tour.imageCover : 'default.jpg' %}
+            <img src="{{ asset('uploads/tours/'~ imageCover) }}" alt="{{ tour.name }}" class="header__hero-img">
         </div>
         <div class="heading-box">
             <h1 class="heading-primary">

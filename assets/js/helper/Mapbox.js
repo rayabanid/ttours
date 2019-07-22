@@ -13,7 +13,6 @@ class Mapbox {
 		const map = new mapboxgl.Map({
 			container: 'map',
 			style: 'mapbox://styles/kboyz/cjy4k348700im1clc3p8vn256',
-			scrollZoom: false,
 			zoom: 5,
 			maxZoom: 10
 		});

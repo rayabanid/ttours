@@ -25,6 +25,8 @@ class User {
 					setTimeout(()=> {
 						window.location.href = response.url;
 					}, 2000);
+				} else {
+					$('.notification').html(`<div class="alert alert--error">${response.message}</div>`);
 				}
 			},
 			complete: () => {
@@ -82,6 +84,8 @@ class User {
 					$('.notification').html(`<div class="alert alert--success">${response.message}</div>`);
 					extraParameters.form.trigger('reset');
 					//extraParameters.form.find(':input').blur();
+				} else {
+					$('.notification').html(`<div class="alert alert--error">${response.message}</div>`);
 				}
 			},
 			complete: () => {

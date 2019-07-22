@@ -7,7 +7,7 @@
 /var/
 /vendor/
 /public/uploads/tours/*
-!public/uploads/tours/.gitkeep
+!public/uploads/tours/default.jpg
 /public/uploads/users/*
 !public/uploads/users/default.jpg
 ###< symfony/framework-bundle ###

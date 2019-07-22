@@ -48,22 +48,32 @@ class SecurityController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
 
         if ($request->isXmlHttpRequest()) {
-            $user->setEmail($request->request->get('email'));
-            $user->setRoles($user->getRoles());
+            $email = $request->request->get('email');
+            $checkEmail = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
 
-            // encode the password
-            $password = $request->request->get('password');
-            $encoder = $encoder->encodePassword($user, $password);
-            $user->setPassword($encoder);
+            if (!$checkEmail) {
+                $user->setEmail($email);
+                $user->setRoles($user->getRoles());
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+                // encode the password
+                $password = $request->request->get('password');
+                $encoder = $encoder->encodePassword($user, $password);
+                $user->setPassword($encoder);
 
-            $data = [
-                'status' => 'success',
-                'message' => 'Registered successfully. Login now!'
-            ];
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                $data = [
+                    'status' => 'success',
+                    'message' => 'Registered successfully. Login now!'
+                ];
+            } else {
+                $data = [
+                    'status' => 'error',
+                    'message' => 'Email already exist'
+                ];
+            }
 
             return new JsonResponse($data);
         }

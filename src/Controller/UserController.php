@@ -44,36 +44,46 @@ class UserController extends AbstractController
 		$form = $this->createForm(UserType::class, $user);
 
 		if ($request->isXmlHttpRequest()) {
-			$user->setFirstName($request->request->get('firstName'));
-			$user->setLastName($request->request->get('lastName'));
-			$user->setEmail($request->request->get('email'));
-			$user->setRoles($user->getRoles());
+			$email = $request->request->get('email');
+			$checkEmail = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
 
-			// encode the password
-			$password = $form->get('password')->getData();
-			$encoder = $encoder->encodePassword($user, $password);
-			$user->setPassword($encoder);
+            if (!$checkEmail) {
+				$user->setFirstName($request->request->get('firstName'));
+				$user->setLastName($request->request->get('lastName'));
+				$user->setEmail($email);
+				$user->setRoles($user->getRoles());
 
-			// upload image
-			$profileImage = $request->files->get('profileImage');
-			if ($profileImage) {
-				$filename = $this->handleUpload($profileImage);
-				$user->setProfileImage($filename);
+				// encode the password
+				$password = $form->get('password')->getData();
+				$encoder = $encoder->encodePassword($user, $password);
+				$user->setPassword($encoder);
+
+				// upload image
+				$profileImage = $request->files->get('profileImage');
+				if ($profileImage) {
+					$filename = $this->handleUpload($profileImage);
+					$user->setProfileImage($filename);
+				}
+
+				// set timestamps
+				$user->updatedTimestamps();
+
+				$entityManager = $this->getDoctrine()->getManager();
+				$entityManager->persist($user);
+				$entityManager->flush();
+
+				$redirectUrl = $this->generateUrl('user_list');
+				$data = [
+					'status' => 'success',
+					'url' => $redirectUrl,
+					'message' => 'User successfully created'
+				];
+			} else {
+				$data = [
+                    'status' => 'error',
+                    'message' => 'Email already exist'
+                ];
 			}
-
-			// set timestamps
-			$user->updatedTimestamps();
-
-			$entityManager = $this->getDoctrine()->getManager();
-			$entityManager->persist($user);
-			$entityManager->flush();
-
-			$redirectUrl = $this->generateUrl('user_list');
-			$data = [
-				'status' => 'success',
-				'url' => $redirectUrl,
-				'message' => 'User successfully created'
-			];
 
 			return new JsonResponse($data);
 		}
