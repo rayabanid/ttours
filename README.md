@@ -5,7 +5,6 @@ Built using Symform framework
 ### Requirements
 - PHP v7.3+
 - Composer
-- NodeJs
 
 ## Installation
 Clone the repository or download the zip file
