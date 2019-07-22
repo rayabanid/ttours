@@ -16,6 +16,7 @@
         "between-range": "^1.0.0",
         "bootbox": "^5.2.0",
         "bootstrap": "^4.3.1",
+        "esm": "^3.2.25",
         "flatpickr": "^4.6.2",
         "is-valid-coordinates": "^1.0.0",
         "jquery": "^3.4.1",
