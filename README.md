@@ -1,6 +1,6 @@
 # TTours App
 
-Built using Symform framework
+Built using Symform Framework
 
 ### Requirements
 - PHP v7.3+
@@ -8,7 +8,7 @@ Built using Symform framework
 
 ### Technologies used
 - Symfony Framework
-- Symfony flex
+- Symfony Flex
 - Bootstrap
 - JQuery
 - Webpack
