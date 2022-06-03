@@ -20,7 +20,7 @@
         "flatpickr": "^4.6.2",
         "is-valid-coordinates": "^1.0.0",
         "jquery": "^3.4.1",
-        "jquery-validation": "^1.19.1",
+        "jquery-validation": "^1.19.4",
         "mapbox-gl": "^1.1.1",
         "popper.js": "^1.15.0"
     }
